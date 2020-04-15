@@ -54,6 +54,28 @@
                     break;
                 }
             }
+
+            //play 5 rounds of the game 
+            function game() {
+                let gamerSelection;
+                let gameMessage;
+                let computerScore = 0;
+                let gamerScore = 0;
+                for (let i = 1; i < 6; i++) {
+                    gamerSelection = prompt('Rock, Papier or Scissors? Choose now!','Rock');
+                    gameMessage = playRound(gamerSelection, computerPlay());
+                    console.log(gameMessage);
+                    if (gameMessage.indexOf('win') != -1) { gamerScore++; } 
+                        else if (gameMessage.indexOf('lose') != -1) { computerScore++; }
+                }
+                console.log('you vs. computer');
+                console.log(gamerScore + ':' + computerScore);
+            }
+            
+            //main program
+            console.log('Rock, papier, scissors 5 round game against the computer.');
+            game();
+
         </script>
     </body>
 </html>
