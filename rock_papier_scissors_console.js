@@ -47,7 +47,7 @@ function playRound(playerSelection, computerSelection){
                 break; 
             };
             break;
-            default:{
+            default:{   //Deal with illegal input
                 return 'ERROR Illegal input!';
             }
         }
@@ -61,9 +61,11 @@ function game() {
     let computerScore = 0;
     let gamerScore = 0;
     for (let i = 1; i < 6; i++) {
-        gamerSelection = prompt('Rock, Papier or Scissors? Choose now!','Rock');
-        gameMessage = playRound(gamerSelection, computerPlay());
-        console.log(gameMessage);
+        do { //Keep trying to play until no ERROR  
+            gamerSelection = prompt('Rock, Papier or Scissors? Choose now!','Rock');
+            gameMessage = playRound(gamerSelection, computerPlay());
+            console.log(gameMessage);
+        } while(gameMessage.indexOf('ERROR') != -1)
         if (gameMessage.indexOf('win') != -1) { gamerScore++; } 
             else if (gameMessage.indexOf('lose') != -1) { computerScore++; }
     }
