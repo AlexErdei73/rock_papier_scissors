@@ -47,6 +47,9 @@ function playRound(playerSelection, computerSelection){
                 break; 
             };
             break;
+            default:{
+                return 'ERROR Illegal input!';
+            }
         }
     }
 }
