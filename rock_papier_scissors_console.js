@@ -14,36 +14,40 @@ function computerPlay() {
 
 //Play one round of the game
 function playRound(playerSelection, computerSelection){
-    playerSelection = playerSelection.toLowerCase();
-    computerSelection = computerSelection.toLowerCase();
-    switch (playerSelection) {
-        case 'rock': switch (computerSelection) {
-            case 'rock': return 'It is a tie! Rock cannot beat rock.';
+    if (typeof(playerSelection)!='string') { //Deal with user input cancelation
+        return 'ERROR. Input canceled!';
+    } else {
+        playerSelection = playerSelection.toLowerCase();
+        computerSelection = computerSelection.toLowerCase();
+        switch (playerSelection) {
+            case 'rock': switch (computerSelection) {
+                case 'rock': return 'It is a tie! Rock cannot beat rock.';
+                break;
+                case 'papier': return 'You lose! Papier beats rock.';
+                break;
+                case 'scissors': return 'You win! Rock beats scissors.';
+                break; 
+            };
             break;
-            case 'papier': return 'You lose! Papier beats rock.';
+            case 'papier': switch (computerSelection) {
+                case 'rock': return 'You win! Papier beats rock.';
+                break;
+                case 'papier': return 'It is a tie! Papier cannot beat papier.';
+                break;
+                case 'scissors': return 'You lose! Scissors beat papier.';
+                break; 
+            };
             break;
-            case 'scissors': return 'You win! Rock beats scissors.';
-            break; 
-        };
-        break;
-        case 'papier': switch (computerSelection) {
-            case 'rock': return 'You win! Papier beats rock.';
+            case 'scissors': switch (computerSelection) {
+                case 'rock': return 'You lose! Rock beats scissors.';
+                break;
+                case 'papier': return 'You win! Scissors beat papier.';
+                break;
+                case 'scissors': return 'It is a tie! Scissors cannot beat scissors.';
+                break; 
+            };
             break;
-            case 'papier': return 'It is a tie! Papier cannot beat papier.';
-            break;
-            case 'scissors': return 'You lose! Scissors beat papier.';
-            break; 
-        };
-        break;
-        case 'scissors': switch (computerSelection) {
-            case 'rock': return 'You lose! Rock beats scissors.';
-            break;
-            case 'papier': return 'You win! Scissors beat papier.';
-            break;
-            case 'scissors': return 'It is a tie! Scissors cannot beat scissors.';
-            break; 
-        };
-    break;
+        }
     }
 }
 
